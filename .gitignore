@@ -1,0 +1,8 @@
+
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/test-examples/
+/blob-report/
+/playwright/.cache/
