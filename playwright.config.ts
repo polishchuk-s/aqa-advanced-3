@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
+require('dotenv').config();
 
 /**
  * Read environment variables from file.
@@ -11,6 +12,15 @@ import { defineConfig, devices } from '@playwright/test';
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
+export const config = {
+  baseUrl: process.env.BASE_URL,
+  credentials: {
+    email: process.env.USER_EMAIL,
+    password: process.env.USER_PASSWORD,
+  },
+};
+
+
 export default defineConfig({
   testDir: './tests',
   /* Run tests in files in parallel */
