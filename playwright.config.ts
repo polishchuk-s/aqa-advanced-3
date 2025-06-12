@@ -14,6 +14,7 @@ require('dotenv').config();
  */
 export const config = {
   baseUrl: process.env.BASE_URL,
+  garageUrl: process.env.GARAGE_URL,
   credentials: {
     email: process.env.USER_EMAIL,
     password: process.env.USER_PASSWORD,
@@ -44,6 +45,23 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
+
+    {
+      name: 'setup',
+      testMatch: /.*login\.spec\.js/,
+    },
+
+    {
+      name: 'garageTests',
+      testDir: './tests/23-hw-playwright-fixtures',
+      testIgnore: /.*login\.spec\.js/,
+      dependencies: ['setup'],
+      use: {
+        ...devices['Desktop Chrome'],
+        storageState: 'tests/23-hw-playwright-fixtures/auth/auth.json',
+      },
+    },
+
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
